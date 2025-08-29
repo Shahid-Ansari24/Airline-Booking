@@ -1,8 +1,11 @@
 const express = require('express')
 const { PORT } = require('./config');
+const apiRoutes = require('./routes');
 
 const app = express();
 
-app.listen((req, res) => {
-    res.send(`Successfully started the server ${PORT}`);
+app.use('/api', apiRoutes);
+
+app.listen(PORT, () => {
+    console.log(`Successfully started the server ${PORT}`);
 })
